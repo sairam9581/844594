@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<title>
+Javascript DOM program
+</title>
+
+</head>
+<body>
+<form name="myform" method="post" >
+<center>
+<table border='3'>
+<tr>
+<td>Name</td><td><input type="text" id="text1"></td>
+</tr>
+<tr>
+<td>DOB</td><td><input type="date" id="dob" required></td>
+</tr>
+</table>
+<button onclick="validation()">Submit</button>
+</form>
+<script type="text/javascript">
+
+function validation()
+{
+var a=document.forms["myform"]["text1"].value;
+if(a=='')
+{
+alert("Name cannot be Empty!!!!!");
+}
+
+}
+
+</script>
+
+
+</body>
+</html>

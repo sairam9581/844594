@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<title>
+Javascript
+</title>
+</head>
+
+<body>
+<p id="p1">This is some content inside the paragraph</p>
+<script>
+
+var a='a';
+if(isNaN(a))
+document.writeln('Its not a Number');
+else
+document.writeln('Its a Number');
+
+document.writeln('<br>');
+
+function greetings(msg)
+{
+//msg=pompt('Enter what you What to print!');
+return(msg);
+}
+
+var msg=greetings('hai');
+document.writeln(msg);
+
+document.writeln('<br>');
+var mg='hello';
+
+function fcall()
+{
+var msg='hai all';
+document.writeln(msg);
+}
+
+var obj=fcall();
+document.writeln('<br>');
+document.writeln(mg);
+
+document.writeln('<br>');
+
+function mul(a,b,c)
+{
+return a*b*c;
+}
+
+var n1=parseFloat(prompt('Enter the first value'));
+var n2=parseFloat(prompt('Enter the second value'));
+var n3=parseFloat(prompt('Enter the third value'));
+
+var ob=mul(n1,n2,n3);
+document.writeln('The product of '+ n1 +'and '+ n2 +'and '+ n3 +'is '+ob);
+
+function Greet(msg)
+{
+return msg;
+}
+document.getElementById('p1').innerHTML=Greet('hello, I changed the content in the paragraph');
+</script>
+
+</body>
+
+</html>

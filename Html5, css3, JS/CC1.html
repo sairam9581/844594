@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<title>
+Registration Page
+</title>
+</head>
+<body>
+<font color="white">
+<center>
+<style>
+body
+{
+background-image:url('do3.jpg');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+}
+</style>
+<font color="" text-align="center">
+<p> <font size="25px" face="Times New Roman">Registration Form</font></p>
+
+<form>
+
+<table>
+<tr>
+<td>Name  </td>
+<td><input type="text" id="text1" value="Eg.Gokul"></td>
+</tr>
+<tr>
+<td>Date of Birth </td>
+<td><input type="date" id="text2" name="dob"></td>
+</tr>
+<tr>
+<td>Address  </td>
+<td><textarea name="address" row="5" column="50"></textarea></td>
+</tr>
+<tr>
+<td>Gender </td>
+<td><input type="radio" id="r1" name="Gender">Male<br>
+<input type="radio" id="r1" name="Gender">Female<br>
+<input type="radio" id="r1" name="Gender">Others</td>
+</tr>
+<tr>
+<td>Phone No  </td>
+<td><input type="text" name="Phone number" Maxlength="10"></td>
+</tr>
+<tr>
+<tr>
+<td>Email  </td>
+<td><input type="Email" name="Email"></td>
+</tr>
+<tr>
+<tr>
+<td>Hobbies :</td>
+<td>
+<select>
+<option name="Swmming">Swmming
+<option name="cricket">Cricket
+<option name="reading">Reading
+</select>
+</td>
+</tr>
+
+</table>
+<button id="btnshow" onclick="show()">submit</button>
+<input type="reset" name="reset">
+</form>
+
+
+<script>
+function show()
+{
+var a=document.getElementById("text1").value;
+
+document.writeln(a);
+//document.writeln(c);
+}
+</script>
+
+
+
+</body>
+
+</html>
