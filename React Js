@@ -1,0 +1,184 @@
+import * as React from 'react';
+import styles from './Home.module.scss';
+import { IHomeProps } from './IHomeProps';
+import { escape } from '@microsoft/sp-lodash-subset';
+import 'bootstrap/dist/css/bootstrap.css';
+import classNames from 'classnames';
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselCaption
+} from 'reactstrap';
+
+
+
+
+export default class Home extends React.Component<IHomeProps, {activeIndex:any}> {
+  public animating;
+  public items;
+  constructor(props) {
+    super(props);
+   
+    this.state = { activeIndex: 0 };
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+    this.goToIndex = this.goToIndex.bind(this);
+    this.onExiting = this.onExiting.bind(this);
+    this.onExited = this.onExited.bind(this);
+
+    this.items=[
+      {
+        src: this.props.BannerImage,
+        altText: '',
+        caption: ''
+      }
+      // {
+      //   src:  this.props.BannerImage,
+      //   altText: '',
+      //   caption: ''
+      // },
+      // {
+      //   src:  this.props.BannerImage,
+      //   altText: '',
+      //   caption: ''
+      // }
+    ];
+
+    
+  }
+
+  public onExiting() {
+    this.animating = true;
+  }
+
+  public onExited() {
+    this.animating = false;
+  }
+
+  public next() {
+    if (this.animating) return;
+    const nextIndex = this.state.activeIndex === this.items.length - 1 ? 0 : this.state.activeIndex + 1;
+    this.setState({ activeIndex: nextIndex });
+  }
+
+  public previous() {
+    if (this.animating) return;
+    const nextIndex = this.state.activeIndex === 0 ? this.items.length - 1 : this.state.activeIndex - 1;
+    this.setState({ activeIndex: nextIndex });
+  }
+
+  public goToIndex(newIndex) {
+    if (this.animating) return;
+    this.setState({ activeIndex: newIndex });
+  }
+  public render(): React.ReactElement<IHomeProps> {
+    const { activeIndex } = this.state;
+    const slides = this.items.map((item) => {
+      return (
+        
+        // <CarouselItem
+        //   onExiting={this.onExiting}
+        //   onExited={this.onExited}
+        //   key={item.src}
+        // >
+          <img className={styles.banner} src={item.src} alt={item.altText} />
+        //   <CarouselCaption captionText={item.altText} captionHeader={item.caption} />
+        // </CarouselItem>
+      );
+    });
+
+
+    return (
+      <div className={ styles.home }>
+         <div className={styles.banner}>
+               {/* <Carousel
+               activeIndex={activeIndex}
+               next={this.next}
+               previous={this.previous}
+             >
+               <CarouselIndicators items={this.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+               {slides}
+               <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+               <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+             </Carousel> */}
+
+              <img src={escape(this.props.BannerImage)} className={styles.banner} alt="" />
+         </div>
+
+         <section className={styles.indroduction}>
+          <div className="container">
+            <div className={classNames("row",styles.mmmt)}>
+              <div className="col-lg-2">
+                <div className={classNames("img-fluid",styles.prelative)}>
+                  <div className={styles.imageee}>
+                     <img src={escape(this.props.FrankImage)}/>
+                  </div>
+                  <div className={styles.vpname}>
+                    <h6 className={styles.mmt}>Frank Lemmink</h6>
+                    <p className={styles.mt}>VP Finance P&T </p>
+                  </div>
+                  </div>
+                  
+              </div>
+
+              <div className="col-lg-10">
+                <h5 className={styles.mainheading}>Welcome to the Finance Projects & Wells Centre of Expertise Portal</h5>
+                <h6 className={styles.ppaa}>Your portal to our people, our community, our capabilities, our tools and our delivery</h6>
+                <p className={styles.desi}>“World class delivery of Projects and Wells is a key differentiator for Shell. Over the years we have set ourselves apart from the competition by continuously increasing the profitability and robustness of our investments by making our designs simpler and cheaper, by leveraging the supply chain better, and by excellent delivery. Finance has been a key contributor to this success, driving commerciality and bottom-line focus, and by providing transparency and effective performance management. Under World Class Finance we have organised accountabilities for Finance support to projects and wells as close as possible to where the work is executed, mostly in the OUs. It is essential that we build a thriving global community of practitioners of Finance in Projects and Wells so that we can leverage experience, share learnings, and help each other to continue to deepen our expertise and capability.”</p>
+              </div>
+              
+            </div>
+          </div>
+         </section>
+
+
+         <section>
+          <div className="container">
+              <div className="row">
+                  <div className="col-lg-4 col-centered">
+                    <div className={classNames(styles.images)}>
+                     <a href={escape(this.props.OurBehaviour)}> <img src={escape(this.props.OurBehaviourImage)}/>
+                     <h6 >OUR BEHAVIOURS</h6>
+                     </a>
+                           
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-centered">
+                    <div className={classNames(styles.images)}>
+                     <a href={escape(this.props.OurAccountability)}> <img src={escape(this.props.OurAccountabilityImage)}/>
+                     <h6 >OUR ACCOUNTABILITY </h6>
+                     </a>
+                        
+                         
+                            
+                    </div>export interface IHomeProps {
+  OurAccountability: string;
+  OurBehaviour: string;
+  OurCapability:string;
+  OurAccountabilityImage: string;
+  OurBehaviourImage: string;
+  OurCapabilityImage:string;
+  FrankImage:string;
+  BannerImage:string;
+}
+
+                  </div>
+                  <div className="col-lg-4 col-centered">
+                    <div className={classNames(styles.images)}>
+                    <a href={escape(this.props.OurCapability)}>  <img src={escape(this.props.OurCapabilityImage)}/>
+                    <h6 >OUR CAPABILITY</h6>
+                    </a>
+                       
+                         
+                           
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+      </div>
+    );
+  }
+}
